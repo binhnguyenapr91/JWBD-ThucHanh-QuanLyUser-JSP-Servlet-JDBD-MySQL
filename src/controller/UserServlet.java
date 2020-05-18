@@ -40,10 +40,13 @@ public class UserServlet extends HttpServlet {
             case "view":
                 viewUser(req, resp);
                 break;
+
             default:
                 showListUser(req, resp);
         }
     }
+
+
 
 
     @Override
@@ -59,11 +62,27 @@ public class UserServlet extends HttpServlet {
             case "update":
                 updateUser(req, resp);
                 break;
+            case "seachByCountry":
+                searchByCountry(req, resp);
+                break;
+
             default:
-                showListUser(req,resp);
+                showListUser(req, resp);
         }
     }
-
+    private void searchByCountry(HttpServletRequest req, HttpServletResponse resp) {
+        String country = req.getParameter("country");
+        List<User> users = userDAO.searchByCountry(country);
+        req.setAttribute("result", users);
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("view/searchResult.jsp");
+        try {
+            requestDispatcher.forward(req, resp);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     private void showListUser(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<User> userList;
         userList = userDAO.selectAllUser();

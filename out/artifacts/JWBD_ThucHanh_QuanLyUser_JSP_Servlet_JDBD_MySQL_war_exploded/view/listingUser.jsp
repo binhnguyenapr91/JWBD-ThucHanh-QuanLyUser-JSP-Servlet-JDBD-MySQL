@@ -61,6 +61,10 @@
         </tr>
 
     </c:forEach>
+    <tr>
+        <td colspan="7"><a href="/view/searchUserById.jsp">Search User By Id</a></td>
+    </tr>
+
 </table>
 </body>
 </html>

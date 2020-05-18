@@ -2,14 +2,14 @@
   Created by IntelliJ IDEA.
   User: binhnguyen
   Date: 18/05/2020
-  Time: 13:46
+  Time: 21:24
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>Listing Users Page</title>
+    <title>Search User Result</title>
     <style>
         table{
             width: 500px;
@@ -34,13 +34,10 @@
 <body>
 <table>
     <tr>
-        <td colspan="7"><h1>Listing All Users</h1></td>
+        <td colspan="7"><h1>Search User Result</h1></td>
     </tr>
     <tr>
-        <td colspan="7"><a href="/userServlet?action=add">Add new user</a></td>
-    </tr>
-    <tr>
-        <td colspan="7"><span class="message">Message</span></td>
+        <td colspan="7"><a href="/userServlet">Back to Listing</a></td>
     </tr>
     <tr>
         <th>ID</th>
@@ -49,22 +46,16 @@
         <th>Country</th>
         <th colspan="3">Functions</th>
     </tr>
-    <c:forEach items="${userList}" var="user">
+    <c:forEach items="${result}" var="user">
         <tr>
             <td>${user.getId()}</td>
             <td>${user.getName()}</td>
             <td>${user.getEmail()}</td>
             <td>${user.getCountry()}</td>
-            <td><a href="/userServlet?action=view&id=${user.getId()}">View</a></td>
-            <td><a href="/userServlet?action=update&id=${user.getId()}">Update</a></td>
-            <td><a href="/userServlet?action=delete&id=${user.getId()}">Delete</a></td>
         </tr>
 
     </c:forEach>
-    <tr>
-        <td colspan="7"><a href="/view/searchUserById.jsp">Search User By Id</a></td>
-    </tr>
-
 </table>
 </body>
 </html>
+

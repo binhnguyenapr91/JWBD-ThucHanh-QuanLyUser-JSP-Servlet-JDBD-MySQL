@@ -15,7 +15,8 @@ public class UserDAO implements IUserDAO {
     private static final String ADD_USER = "insert into users (name,email,country) values (?,?,?);";
     private static final String UPDATE_USER = "update users set name =?,email=?,country=? where id =?;";
     private static final String SELECT_BY_ID = "select * from users where id = ?;";
-    private static final String DELETE_BY_ID = "delete from users where id = ?;";
+    private static final String SELECT_BY_COUNTRY = "select * from users where country = ?";
+    private static final String DELETE_BY_ID = "delete from user where id =?;";
 
     public UserDAO() {
 
@@ -81,6 +82,27 @@ public class UserDAO implements IUserDAO {
             throwables.printStackTrace();
         }
         return user;
+    }
+
+    @Override
+    public List<User> searchByCountry(String input_country) {
+        List<User> users = new ArrayList<>();
+        Connection conn = getConnection();
+        try {
+            PreparedStatement ps = conn.prepareStatement(SELECT_BY_COUNTRY);
+            ps.setString(1, input_country);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt(1);
+                String name = rs.getString(2);
+                String email = rs.getString(3);
+                String country = rs.getString(4);
+                users.add(new User(id,name,email,country));
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return users;
     }
 
     @Override
