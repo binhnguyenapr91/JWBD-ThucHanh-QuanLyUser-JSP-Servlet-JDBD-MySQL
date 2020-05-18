@@ -1,0 +1,17 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="JWBD-ThucHanh-QuanLyUser-JSP-Servlet-JDBD-MySQL:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/JWBD_ThucHanh_QuanLyUser_JSP_Servlet_JDBD_MySQL_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="JWBD-ThucHanh-QuanLyUser-JSP-Servlet-JDBD-MySQL/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="JWBD-ThucHanh-QuanLyUser-JSP-Servlet-JDBD-MySQL" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="mysql-connector-java-5.1.48-bin" />
+          <element id="library" level="project" name="taglibs-standard-spec-1.2.5" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
